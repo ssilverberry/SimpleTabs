@@ -1,15 +1,13 @@
 :host {
   display: block;
   font-family: 'Roboto', sans-serif;
-}
-:host simple-tabs {
-  margin: 25px 33%;
-  position: relative;
+  margin: 0 33%;
 }
 :host nav {
   margin-bottom: 5px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: flex-start;
   z-index: 0;
 }

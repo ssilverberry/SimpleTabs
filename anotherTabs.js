@@ -1,11 +1,10 @@
 class SimpleTabs extends HTMLElement {
-  constructor(headerText, сontentText, tabsAmount) {
+  constructor(headerText, сontentText) {
     super();
     const [tempNames] = headerText.split(' ');
     this.navLinkName = tempNames;
     this.name = headerText;
     this.text = сontentText;
-    this.tabsAmount = tabsAmount;
     this.tabMap = new Map();
 
     this.attachShadow({ mode: 'open' });
@@ -93,12 +92,29 @@ class SimpleTabs extends HTMLElement {
     }
     this.render();
   }
+
+  addTabs(hedaersAndContents) {
+    hedaersAndContents.forEach((value, key) => {
+      this.addTab(key, value);
+    });
+  }
 }
 
 customElements.define('simple-tabs', SimpleTabs);
 const mySimpleTabs = new SimpleTabs('First tab', 'So rich text is here');
 document.body.prepend(mySimpleTabs);
 
-mySimpleTabs.addTab('Second tab', 'I am a batman and I catch you');
-mySimpleTabs.addTab('Third tab', 'There is no better power than ME');
-mySimpleTabs.addTab('Fourth tab', 'Who will survive in the world ?');
+const tabHeadersContent = new Map();
+tabHeadersContent.set('Second header', 'here is some rich text');
+tabHeadersContent.set('Third header', 'here is some rich text');
+
+/*
+// It is extra content for tabs if you want to try to add more tabs.
+tabHeadersContent.set('Fourth header', 'here is some rich text');
+tabHeadersContent.set('Fifth header', 'here is some rich text');
+tabHeadersContent.set('Sixth header', 'here is some rich text');
+tabHeadersContent.set('Seventh header', 'here is some rich text');
+tabHeadersContent.set('eighth header', 'here is some rich text');
+*/
+mySimpleTabs.addTabs(tabHeadersContent);
+mySimpleTabs.addTab('Here is a custom tab header', 'So lorem ipsum dolor sit amet');
