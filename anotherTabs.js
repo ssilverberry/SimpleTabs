@@ -11,6 +11,7 @@ class SimpleTabs extends HTMLElement {
     this.shadowRoot.innerHTML = `
     <link rel="stylesheet" href="./style/style.css">
     <nav></nav>
+    <div class='tab-container'></div>
     `;
   }
 
@@ -44,7 +45,7 @@ class SimpleTabs extends HTMLElement {
         });
       });
     });
-
+    const tabContainer = this.shadowRoot.querySelector('.tab-container');
     const parentTabDiv = document.createElement('div');
     const childTabDiv = document.createElement('div');
     const header = document.createElement('h1');
@@ -65,7 +66,7 @@ class SimpleTabs extends HTMLElement {
       const newMap = new Map(value);
       newMap.forEach((v, k) => {
         nav.appendChild(k);
-        this.shadowRoot.appendChild(v);
+        tabContainer.appendChild(v);
       });
       return newMap;
     });

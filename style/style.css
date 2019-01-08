@@ -45,3 +45,22 @@
 :host .tab_hidden {
   visibility: hidden;
 }
+@media only screen and (max-width: 600px) {
+  :host {
+    margin: 0;
+  }
+  :host nav {
+    position: relative;
+    flex-direction: column;
+    width: 75px;
+  }
+  :host .tab-container {
+    position: absolute;
+    top: 8px;
+    left: 90px;
+  }
+  :host .tab-card {
+    width: 200px;
+    top: 0;
+  }
+}
